@@ -1,6 +1,14 @@
+import { Helmet } from 'react-helmet-async';
+
 export default function PrivacyPage() {
   return (
-    <main className="py-16 px-6">
+    <>
+      <Helmet>
+        <title>Privacy Policy | Lakewood Local</title>
+        <meta name="description" content="Privacy policy for Lakewood Local. How we collect, use, and protect your data." />
+        <link rel="canonical" href="https://lakewoodlocal.net/privacy" />
+      </Helmet>
+      <main className="py-16 px-6">
       <div className="container max-w-[720px] mx-auto">
         <h1 className="text-center text-3xl md:text-4xl font-bold text-text mb-12">
           Privacy Policy
@@ -39,5 +47,6 @@ export default function PrivacyPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }

@@ -1,5 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getBusinessBySlug } from '../data/businesses';
+
+const SITE_URL = 'https://lakewoodlocal.net';
 
 function StarRating({ rating = 5 }) {
   const stars = Math.min(5, Math.max(0, Math.round(rating)));
@@ -45,8 +48,43 @@ export default function BusinessDetailPage() {
   const firstReview = reviews && reviews.length > 0 ? reviews[0] : null;
   const reviewRating = firstReview?.rating ?? 5;
 
+  const pageTitle = `${name} | Lakewood Local`;
+  const metaDescription = description.slice(0, 160).trim() + (description.length > 160 ? '…' : '');
+  const businessUrl = `${SITE_URL}/business/${slug}`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name,
+    description: metaDescription,
+    url: businessUrl,
+    ...(address && { address }),
+    ...(phone && { telephone: phone }),
+    ...(website && { sameAs: [website].concat(facebook ? [facebook] : []) }),
+    ...(image && { image }),
+    ...(reviews?.length > 0 && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: reviewRating,
+        reviewCount: reviews.length,
+        bestRating: 5,
+      },
+    }),
+  };
+
   return (
-    <main className="py-12 px-6 pb-24 bg-bg">
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={businessUrl} />
+        <meta property="og:url" content={businessUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={metaDescription} />
+        {image && <meta property="og:image" content={image} />}
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+      <main className="py-12 px-6 pb-24 bg-bg">
       <div className="container grid grid-cols-1 min-[900px]:grid-cols-[1fr_320px] gap-12 min-[900px]:gap-16 items-start max-w-[1200px] mx-auto">
         <div className="min-w-0 order-2 min-[900px]:order-1">
           <header className="mb-6">
@@ -143,5 +181,6 @@ export default function BusinessDetailPage() {
         </aside>
       </div>
     </main>
+    </>
   );
 }

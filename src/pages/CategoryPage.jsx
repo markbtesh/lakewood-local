@@ -1,6 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import BusinessCard from '../components/BusinessCard';
 import { businesses, categories } from '../data/businesses';
+
+const SITE_URL = 'https://lakewoodlocal.net';
 
 export default function CategoryPage() {
   const { slug } = useParams();
@@ -16,8 +19,22 @@ export default function CategoryPage() {
     );
   }
 
+  const title = `${category.name} | Lakewood Local`;
+  const description = list.length > 0
+    ? `Find local ${category.name.toLowerCase()} in Lakewood. ${list.map((b) => b.name).join(', ')}.`
+    : `Local ${category.name.toLowerCase()} in Lakewood. Check back for new listings.`;
+
   return (
-    <main className="py-12 px-6 pb-24">
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`${SITE_URL}/category/${slug}`} />
+        <meta property="og:url" content={`${SITE_URL}/category/${slug}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+      </Helmet>
+      <main className="py-12 px-6 pb-24">
       <div className="container">
         <header className="text-[0.9rem] mb-4 text-text-muted">
           <Link to="/" className="text-primary">Lakewood Local</Link>
@@ -38,5 +55,6 @@ export default function CategoryPage() {
         )}
       </div>
     </main>
+    </>
   );
 }
