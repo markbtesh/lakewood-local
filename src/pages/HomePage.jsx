@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useState, useMemo } from 'react';
+import { usePageMeta } from '../hooks/usePageMeta';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import BusinessCard from '../components/BusinessCard';
@@ -8,14 +8,6 @@ import { businesses } from '../data/businesses';
 const PER_PAGE = 9;
 const SITE_URL = 'https://lakewoodlocal.net';
 
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Lakewood Local',
-  url: SITE_URL,
-  description: 'Find trusted local businesses in Lakewood. Restaurants, services, and shops that stand behind their work. Support local.',
-};
-
 export default function HomePage() {
   const [page, setPage] = useState(1);
   const total = businesses.length;
@@ -23,14 +15,23 @@ export default function HomePage() {
   const start = (page - 1) * PER_PAGE;
   const list = businesses.slice(start, start + PER_PAGE);
 
+  const websiteJsonLd = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Lakewood Local',
+    url: SITE_URL,
+    description: 'Find trusted local businesses in Lakewood. Restaurants, services, and shops that stand behind their work. Support local.',
+  }), []);
+
+  usePageMeta({
+    title: 'Lakewood Local – Discover the Best Local Businesses in Lakewood',
+    description: 'Find trusted local businesses in Lakewood. Restaurants, services, and shops that stand behind their work. Support local.',
+    canonical: SITE_URL,
+    jsonLd: websiteJsonLd,
+  });
+
   return (
     <>
-      <Helmet>
-        <title>Lakewood Local – Discover the Best Local Businesses in Lakewood</title>
-        <meta name="description" content="Find trusted local businesses in Lakewood. Restaurants, services, and shops that stand behind their work. Support local." />
-        <link rel="canonical" href={SITE_URL} />
-        <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
-      </Helmet>
       <Hero />
       <HowItWorks />
       <section className="py-16 px-6 bg-surface">

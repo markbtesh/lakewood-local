@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { useMemo } from 'react';
+import { usePageMeta } from '../hooks/usePageMeta';
 import { getBusinessBySlug } from '../data/businesses';
 
 const SITE_URL = 'https://lakewoodlocal.net';
@@ -52,7 +53,7 @@ export default function BusinessDetailPage() {
   const metaDescription = description.slice(0, 160).trim() + (description.length > 160 ? '…' : '');
   const businessUrl = `${SITE_URL}/business/${slug}`;
 
-  const jsonLd = {
+  const jsonLd = useMemo(() => ({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name,
@@ -70,20 +71,21 @@ export default function BusinessDetailPage() {
         bestRating: 5,
       },
     }),
-  };
+  }), [name, metaDescription, businessUrl, address, phone, website, facebook, image, reviews?.length, reviewRating]);
+
+  usePageMeta({
+    title: pageTitle,
+    description: metaDescription,
+    canonical: businessUrl,
+    ogUrl: businessUrl,
+    ogTitle: pageTitle,
+    ogDescription: metaDescription,
+    ogImage: image || undefined,
+    jsonLd,
+  });
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={businessUrl} />
-        <meta property="og:url" content={businessUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={metaDescription} />
-        {image && <meta property="og:image" content={image} />}
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
       <main className="py-12 px-6 pb-24 bg-bg">
       <div className="container grid grid-cols-1 min-[900px]:grid-cols-[1fr_320px] gap-12 min-[900px]:gap-16 items-start max-w-[1200px] mx-auto">
         <div className="min-w-0 order-2 min-[900px]:order-1">

@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { usePageMeta } from '../hooks/usePageMeta';
 import BusinessCard from '../components/BusinessCard';
 import { businesses, categories } from '../data/businesses';
 
@@ -24,16 +24,17 @@ export default function CategoryPage() {
     ? `Find local ${category.name.toLowerCase()} in Lakewood. ${list.map((b) => b.name).join(', ')}.`
     : `Local ${category.name.toLowerCase()} in Lakewood. Check back for new listings.`;
 
+  usePageMeta({
+    title,
+    description,
+    canonical: `${SITE_URL}/category/${slug}`,
+    ogUrl: `${SITE_URL}/category/${slug}`,
+    ogTitle: title,
+    ogDescription: description,
+  });
+
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={`${SITE_URL}/category/${slug}`} />
-        <meta property="og:url" content={`${SITE_URL}/category/${slug}`} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-      </Helmet>
       <main className="py-12 px-6 pb-24">
       <div className="container">
         <header className="text-[0.9rem] mb-4 text-text-muted">

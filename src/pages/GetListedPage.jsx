@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { usePageMeta } from '../hooks/usePageMeta';
 import emailjs from '@emailjs/browser';
 
 const SITE_URL = 'https://lakewoodlocal.net';
@@ -95,16 +95,17 @@ export default function GetListedPage() {
     }
   };
 
+  usePageMeta({
+    title: 'Apply To Be Featured | Lakewood Local',
+    description: 'Apply to be featured on Lakewood Local. Get more customers by being recognized as a trusted local business. Free and invitation only.',
+    canonical: `${SITE_URL}/get-listed`,
+    ogUrl: `${SITE_URL}/get-listed`,
+    ogTitle: 'Apply To Be Featured | Lakewood Local',
+    ogDescription: 'Apply to be featured on Lakewood Local. Get more customers by being recognized as a trusted local business.',
+  });
+
   return (
     <>
-      <Helmet>
-        <title>Apply To Be Featured | Lakewood Local</title>
-        <meta name="description" content="Apply to be featured on Lakewood Local. Get more customers by being recognized as a trusted local business. Free and invitation only." />
-        <link rel="canonical" href={`${SITE_URL}/get-listed`} />
-        <meta property="og:url" content={`${SITE_URL}/get-listed`} />
-        <meta property="og:title" content="Apply To Be Featured | Lakewood Local" />
-        <meta property="og:description" content="Apply to be featured on Lakewood Local. Get more customers by being recognized as a trusted local business." />
-      </Helmet>
       <main className="min-h-screen bg-bg-alt py-12 px-4 sm:py-16 sm:px-6">
       <div className="container max-w-5xl">
         <div className="overflow-hidden rounded-2xl bg-surface shadow-lg sm:flex">
