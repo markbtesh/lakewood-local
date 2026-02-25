@@ -37,7 +37,7 @@ export default function GetListedPage() {
     email: '',
     phone: '',
     website: '',
-    servingNewKent: '',
+    servingMonmouth: '',
   });
   const [status, setStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -69,7 +69,7 @@ export default function GetListedPage() {
       email: form.email || '—',
       phone: form.phone || '—',
       website: form.website || '—',
-      servingNewKent: form.servingNewKent || '—',
+      servingMonmouth: form.servingMonmouth || '—',
     };
 
     try {
@@ -87,7 +87,7 @@ export default function GetListedPage() {
         email: '',
         phone: '',
         website: '',
-        servingNewKent: '',
+        servingMonmouth: '',
       });
     } catch (err) {
       setStatus('error');
@@ -226,7 +226,7 @@ export default function GetListedPage() {
                 <input
                   id="website"
                   name="website"
-                  type="url"
+                  type="text"
                   placeholder="Website URL"
                   value={form.website}
                   onChange={handleChange}
@@ -235,11 +235,11 @@ export default function GetListedPage() {
               </div>
 
               <div>
-                <label htmlFor="servingNewKent" className={labelClass}>Serving Monmouth County residents?</label>
+                <label htmlFor="servingMonmouth" className={labelClass}>Serving Monmouth County residents?</label>
                 <select
-                  id="servingNewKent"
-                  name="servingNewKent"
-                  value={form.servingNewKent}
+                  id="servingMonmouth"
+                  name="servingMonmouth"
+                  value={form.servingMonmouth}
                   onChange={handleChange}
                   className={inputClass}
                 >
