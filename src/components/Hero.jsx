@@ -28,8 +28,36 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none" aria-hidden="true">
-        <svg viewBox="0 0 1440 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="block w-full h-8 min-w-full" preserveAspectRatio="xMinYMin slice">
-          <path d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z" fill="#F2F4F5"/>
+        <svg
+          viewBox="0 0 1440 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="block w-full h-8 min-w-full"
+          preserveAspectRatio="xMinYMin slice"
+        >
+          <defs>
+            <linearGradient
+              id="heroWaveGradient"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="32"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0" stopColor="#E1E4E7" />
+              <stop offset="1" stopColor="#F2F4F5" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z"
+            fill="url(#heroWaveGradient)"
+          />
+          <g transform="translate(-20,10)">
+            <path
+              d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z"
+              fill="#F2F4F5"
+            />
+          </g>
         </svg>
       </div>
     </section>
