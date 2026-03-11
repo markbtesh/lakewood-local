@@ -10,8 +10,8 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'templat
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'V4f87Pi01It_cqmYq';
 
 const inputClass =
-  'w-full px-4 py-1 font-[inherit] text-base border border-[var(--color-border)] rounded-[var(--radius-sm)] bg-[var(--color-surface)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20';
-const labelClass = 'block text-sm font-medium text-[var(--color-text)] mb-1.5';
+  'w-full px-4 py-2.5 font-[inherit] text-[0.9375rem] border border-[var(--color-border)] rounded-[var(--radius-md)] bg-[var(--color-surface)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-[3px] focus:ring-[var(--color-primary)]/15';
+const labelClass = 'block text-[0.8125rem] font-medium text-[var(--color-text)] mb-1.5';
 
 const INCLUDED_ITEMS = [
   'Custom profile so your business is easy to find.',

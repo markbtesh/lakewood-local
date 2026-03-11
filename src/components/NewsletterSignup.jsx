@@ -17,29 +17,27 @@ export default function NewsletterSignup({ className = '' }) {
 
   return (
     <form
-      className={className}
+      className={`inline-flex flex-row items-center gap-2 ${className}`.trim()}
       onSubmit={handleSubmit}
       aria-label="Newsletter signup"
     >
-      <div className="flex flex-wrap gap-2 items-center justify-center [&_input]:flex-1 [&_input]:min-w-[200px]">
-        <label htmlFor="newsletter-email" className="sr-only">
-          Email Address
-        </label>
-        <input
-          id="newsletter-email"
-          type="email"
-          value={email}
-          onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
-          placeholder="Email Address"
-          required
-          aria-invalid={status === 'error'}
-          aria-describedby={status !== 'idle' ? 'newsletter-message' : undefined}
-          className="w-full max-w-[360px] py-3.5 px-5 bg-white/95 border border-white/50 rounded-[var(--radius-sm)] focus:border-white focus:outline-none focus:ring-[3px] focus:ring-white/30 shrink-0"
-        />
-        <button type="submit" className="btn btn-accent shrink-0">
-          Get News
-        </button>
-      </div>
+      <label htmlFor="newsletter-email" className="sr-only">
+        Email
+      </label>
+      <input
+        id="newsletter-email"
+        type="email"
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
+        placeholder="Your email"
+        required
+        aria-invalid={status === 'error'}
+        aria-describedby={status !== 'idle' ? 'newsletter-message' : undefined}
+        className="w-[200px] py-2 px-3 bg-white border border-white/50 rounded-[var(--radius-md)] text-[0.9rem] text-black placeholder:text-gray-500 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/40 box-border"
+      />
+      <button type="submit" className="btn btn-accent py-2 px-4 text-[0.9rem] shrink-0">
+        Subscribe
+      </button>
       {status === 'success' && (
         <p id="newsletter-message" className="mt-4 text-[0.95rem] text-white/95" role="status">
           Thanks for subscribing! Please check your email for further instructions.

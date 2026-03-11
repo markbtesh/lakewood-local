@@ -2,21 +2,21 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="mt-auto py-12 px-6 bg-primary-dark text-white/90">
+    <footer className="mt-auto py-12 px-6 bg-gradient-to-b from-primary-dark to-[#083f42] text-white/90 border-t border-white/10">
       <div className="container text-center">
-        <div className="flex flex-wrap justify-center gap-4 gap-x-8 mb-6">
-          <Link to="/privacy" className="text-white/90 text-[0.95rem] font-medium hover:text-white hover:underline">
-            Privacy Policy
+        <nav className="flex flex-wrap justify-center gap-6 sm:gap-8 mb-6" aria-label="Footer">
+          <Link to="/privacy" className="text-[0.875rem] text-white/75 hover:text-white transition-colors duration-200">
+            Privacy
           </Link>
-          <Link to="/get-listed" className="text-white/90 text-[0.95rem] font-medium hover:text-white hover:underline">
-            Add Your Business
+          <Link to="/get-listed" className="text-[0.875rem] text-white/75 hover:text-white transition-colors duration-200">
+            Get Listed
           </Link>
-          <Link to="/contact" className="text-white/90 text-[0.95rem] font-medium hover:text-white hover:underline">
+          <Link to="/contact" className="text-[0.875rem] text-white/75 hover:text-white transition-colors duration-200">
             Contact
           </Link>
-        </div>
-        <p className="m-0 text-[0.9rem] text-white/75">
-          © {new Date().getFullYear()} Lakewood Local. All Rights Reserved.
+        </nav>
+        <p className="m-0 text-[0.8125rem] text-white/55">
+          © {new Date().getFullYear()} Lakewood Local
         </p>
       </div>
     </footer>

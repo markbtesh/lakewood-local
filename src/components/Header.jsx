@@ -50,11 +50,11 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[100] bg-surface border-b border-border shadow-[0_2px_8px_rgba(13,79,79,0.06)]">
-      <div className="container flex items-center justify-between min-h-[72px] gap-6">
+    <header className="sticky top-0 z-[100] bg-surface/95 backdrop-blur-md border-b border-border">
+      <div className="container flex items-center justify-between min-h-[64px] gap-6">
         <Link
           to="/"
-          className="font-[family-name:var(--font-heading)] text-2xl font-bold text-primary tracking-wide hover:text-primary-dark"
+          className="text-xl font-bold text-primary tracking-tight hover:text-primary-dark transition-colors"
           onClick={() => setMenuOpen(false)}
         >
           Lakewood Local
@@ -74,7 +74,7 @@ export default function Header() {
 
         <nav
           ref={navRef}
-          className={`flex items-center md:flex md:static md:visible md:translate-y-0 md:shadow-none fixed top-[72px] left-0 right-0 max-h-[calc(100vh-72px)] overflow-y-auto bg-surface border-b border-border md:border-b-0 p-6 md:p-0 -translate-y-full invisible md:max-h-none md:overflow-visible transition-all duration-250 ease-out ${
+          className={`flex items-center md:flex md:static md:visible md:translate-y-0 md:shadow-none fixed top-[64px] left-0 right-0 max-h-[calc(100vh-64px)] overflow-y-auto bg-surface border-b border-border md:border-b-0 p-6 md:p-0 -translate-y-full invisible md:max-h-none md:overflow-visible transition-all duration-250 ease-out ${
             menuOpen ? 'translate-y-0 visible shadow-[0_12px_40px_rgba(13,79,79,0.1)]' : ''
           }`}
           aria-label="Main navigation"
@@ -133,7 +133,7 @@ export default function Header() {
             <li className="mt-4 md:mt-0 md:ml-2">
               <Link
                 to="/get-listed"
-                className="block py-2.5 px-4 md:py-2 md:px-4 text-center text-surface bg-accent rounded-[var(--radius-sm)] hover:bg-accent-soft hover:text-surface font-medium text-[0.95rem]"
+                className="block py-2 px-4 text-center text-surface bg-primary rounded-[var(--radius-md)] hover:bg-primary-dark font-semibold text-[0.875rem] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 Get Listed
