@@ -42,7 +42,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border text-center">
-          <NewsletterSignup />
+          <NewsletterSignup stackOnMobile className="w-full max-w-sm mx-auto" />
         </div>
       </div>
       <div className="w-full overflow-hidden mt-12">

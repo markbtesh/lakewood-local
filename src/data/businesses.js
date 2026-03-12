@@ -2,11 +2,49 @@ export const categories = [
   { name: 'Food & Fun', slug: 'food-fun', children: [{ name: 'Restaurants', slug: 'restaurants' }] },
   { name: 'Health & Fitness', slug: 'health-fitness', children: [{ name: 'Chiropractors', slug: 'chiropractors' }, { name: 'Reiki Therapists', slug: 'reiki' }] },
   { name: 'Professionals', slug: 'professionals', children: [{ name: 'Pet Services', slug: 'pet-services' }, { name: 'Real Estate Agents', slug: 'real-estate' }, { name: 'Wedding Planners', slug: 'wedding-planners' }] },
-  { name: 'Shop', slug: 'shop', children: [{ name: 'Home Goods', slug: 'home-goods' }, { name: 'Dry Cleaning', slug: 'dry-cleaning' }] },
+  { name: 'Shops', slug: 'shop', children: [{ name: 'Home Goods', slug: 'home-goods' }, { name: 'Dry Cleaning', slug: 'dry-cleaning' }] },
   { name: 'Trades', slug: 'trades', children: [{ name: 'Auto Detailing', slug: 'auto-detailing' }, { name: 'Pressure Washing', slug: 'pressure-washing' }, { name: 'Auto Repair', slug: 'auto-repair' }, { name: 'Locksmith', slug: 'locksmith' }, { name: 'Appliance Repair', slug: 'appliance-repair' }, { name: 'HVAC', slug: 'hvac' }] },
 ];
 
 export const businesses = [
+  {
+    id: 'battle-real-estate-nj',
+    name: 'Battle Real Estate NJ',
+    tagline: 'Residential and commercial real estate across New Jersey and a mindset that goes beyond the sale.',
+    category: 'real-estate',
+    categoryLabel: 'Real Estate Agents',
+    description: `Anthony is a New Jersey based realtor and entrepreneur who has spent the last three to four years turning his natural creativity and love of people into a career that goes well beyond selling homes.`,
+    sections: [
+      {
+        title: 'What Makes Anthony Different',
+        body: `A Kean University graduate with a degree in psychology, Anthony brings a genuine understanding of how people think and what they need to hear. Having worked extensively with investors across residential and commercial properties, he offers clients a wider view of the road ahead. With first time buyers, he coaches smarter, strategic moves: build equity, learn what it means to be a homeowner, and use that first property as a stepping stone. His goal: clients who can sit down with anyone and clearly explain how the whole thing came together.`,
+      },
+      {
+        title: 'Battle Connects',
+        body: `Outside of real estate, Anthony founded Battle Connects, a networking platform serving Monmouth and Ocean County. It grew from his years as co-chairman of the Young Emerging Professionals through the Toms River Chamber of Commerce. Battle Connects is for coaches, business owners, content creators, digital influencers, and anyone who benefits from knowing the right people. Events are held quarterly, with Anthony doing a personal debrief after each one to keep improving.`,
+      },
+      {
+        title: 'A Team Player',
+        body: `Anthony describes himself as a team player in the truest sense, someone who understands that being on a team doesn't always mean being the captain. Whether working alongside a lender, an attorney, or a title company, his focus stays on making the client's experience as smooth and seamless as possible. This is a service based profession, and that's something he never loses sight of.`,
+      },
+    ],
+    phone: '(732) 267-5495',
+    website: 'https://battlerealestatenj.com/',
+    facebook: null,
+    email: 'anthonybattlerealestate@gmail.com',
+    address: 'Daunno Realty Services, 206 Westfield Ave, Clark, NJ 07066 (serving NJ statewide)',
+    reviews: [
+      {
+        author: 'Eduardo Sotomayor',
+        rating: 5,
+        text: 'Anthony Battle was great to work with! He helped me sell my condo fast and got me a price way above what I was asking. He\'s very resourceful and had a great network of people to help with everything I needed from start to closing. He knows the area really well and kept me updated the whole time. He made everything easy and stress free. I really appreciated how hard he worked and how quickly he responded to my questions. I would definitely recommend him to anyone!',
+      },
+    ],
+    featured: true,
+    image: '/anthony-battle.png',
+    verified: false,
+    googleReviewsUrl: 'https://www.google.com/search?q=anthony+battle+realestate&oq=anthony+b&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7Mg4IARBFGCcYOxiABBiKBTIGCAIQRRg5MgYIAxAjGCcyCggEEC4YsQMYgAQyCggFEC4YsQMYgAQyBggGEEUYPDIGCAcQRRg80gEIMTA4OWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0xac6f9957e6b62925:0x94abc0cb16cf6e15,1,,,,',
+  },
   {
     id: 'lakewood-cleaners',
     name: 'Lakewood Cleaners',
@@ -65,7 +103,7 @@ export const businesses = [
     sections: [
       {
         title: 'Services & Hours',
-        body: `Oil changes, tire service, brake repair, and alignments for all vehicle makes and models. Open Mon–Fri 7:30am–6pm, Sat 8am–4:30pm.`,
+        body: `Oil changes, tire service, brake repair, and alignments for all vehicle makes and models. Open Mon to Fri 7:30am to 6pm, Sat 8am to 4:30pm.`,
       },
     ],
     phone: '(732) 363-8773',
@@ -99,7 +137,7 @@ export const businesses = [
     address: '399 Cedar Bridge Ave, Unit 12, Lakewood, NJ 08701',
     reviews: [],
     featured: true,
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop',
+    image: 'https://appliancerepairlakewood.com/wp-content/uploads/2024/12/professional-refrigerator-repair-768x432.png',
     verified: false,
     googleReviewsUrl: null,
   },
@@ -113,7 +151,7 @@ export const businesses = [
     sections: [
       {
         title: 'Service Area',
-        body: `Serving Howell and the greater Central Jersey area including Monmouth, Ocean, and Middlesex Counties. Call for estimates and same-day service when available.`,
+        body: `Serving Howell and the greater Central Jersey area including Monmouth, Ocean, and Middlesex Counties. Call for estimates and same day service when available.`,
       },
     ],
     phone: '(732) 206-1900',
@@ -130,14 +168,14 @@ export const businesses = [
   {
     id: 'skillenders-automotive-center',
     name: "Skillender's Automotive Center",
-    tagline: 'Family-owned auto repair: AC, brakes, diagnostics, and engine work.',
+    tagline: 'Family owned auto repair: AC, brakes, diagnostics, and engine work.',
     category: 'auto-repair',
     categoryLabel: 'Auto Repair',
-    description: `Skillender's Automotive Center is a family-owned shop in Howell offering AC repair, brake service, diagnostics, and engine services. Dependable care for your vehicle.`,
+    description: `Skillender's Automotive Center is a family owned shop in Howell offering AC repair, brake service, diagnostics, and engine services. Dependable care for your vehicle.`,
     sections: [
       {
         title: 'Services',
-        body: `AC repair, brake service, diagnostics, engine work, and general auto repair. Located on South Route 9 in Howell. Family-owned and focused on honest, quality service.`,
+        body: `AC repair, brake service, diagnostics, engine work, and general auto repair. Located on South Route 9 in Howell. Family owned and focused on honest, quality service.`,
       },
     ],
     phone: '(732) 370-5755',

@@ -106,7 +106,7 @@ export default function GetListedPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-bg-alt py-12 px-4 sm:py-16 sm:px-6">
+      <main className="min-h-screen bg-bg-alt py-12 md:px-4 sm:py-16 sm:px-6">
       <div className="container max-w-5xl">
         <div className="overflow-hidden rounded-2xl bg-surface shadow-lg sm:flex">
           {/* Left: Apply To Be Featured */}

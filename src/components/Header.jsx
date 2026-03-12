@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { categories } from '../data/businesses';
+import { categories, businesses } from '../data/businesses';
 
 function ChevronDown({ open }) {
   return (
@@ -49,6 +49,15 @@ export default function Header() {
     setMobileExpanded((prev) => (prev === catSlug ? null : catSlug));
   };
 
+  const categoriesWithListings = categories
+    .map((cat) => {
+      const childrenWithBusinesses = cat.children.filter((child) =>
+        businesses.some((b) => b.category === child.slug),
+      );
+      return { ...cat, children: childrenWithBusinesses };
+    })
+    .filter((cat) => cat.children.length > 0);
+
   return (
     <header className="sticky top-0 z-[100] bg-surface/95 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between min-h-[64px] gap-6">
@@ -80,7 +89,7 @@ export default function Header() {
           aria-label="Main navigation"
         >
           <ul className="flex flex-col md:flex-row md:items-center list-none m-0 p-0 gap-0 w-full md:w-auto">
-            {categories.map((cat) => (
+            {categoriesWithListings.map((cat) => (
               <li
                 key={cat.slug}
                 className="relative border-b border-border md:border-b-0"

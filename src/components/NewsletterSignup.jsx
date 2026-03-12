@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function NewsletterSignup({ className = '' }) {
+export default function NewsletterSignup({ className = '', stackOnMobile = false }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle | success | error
 
@@ -15,9 +15,13 @@ export default function NewsletterSignup({ className = '' }) {
     setEmail('');
   }
 
+  const layoutClasses = stackOnMobile
+    ? 'flex flex-col items-stretch gap-2 sm:inline-flex sm:flex-row sm:items-center'
+    : 'inline-flex flex-row items-center gap-2';
+
   return (
     <form
-      className={`inline-flex flex-row items-center gap-2 ${className}`.trim()}
+      className={`${layoutClasses} ${className}`.trim()}
       onSubmit={handleSubmit}
       aria-label="Newsletter signup"
     >
@@ -33,7 +37,7 @@ export default function NewsletterSignup({ className = '' }) {
         required
         aria-invalid={status === 'error'}
         aria-describedby={status !== 'idle' ? 'newsletter-message' : undefined}
-        className="w-[200px] py-2 px-3 bg-white border border-white/50 rounded-[var(--radius-md)] text-[0.9rem] text-black placeholder:text-gray-500 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/40 box-border"
+        className="w-full sm:w-[260px] py-2 px-3 bg-white border border-white/50 rounded-[var(--radius-md)] text-[0.9rem] text-black placeholder:text-gray-500 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/40 box-border"
       />
       <button type="submit" className="btn btn-accent py-2 px-4 text-[0.9rem] shrink-0">
         Subscribe

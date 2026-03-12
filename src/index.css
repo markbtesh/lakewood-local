@@ -234,3 +234,24 @@
     animation: none;
   }
 }
+
+@keyframes wave-flow {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-60px); }
+  100% { transform: translateX(0); }
+}
+@keyframes wave-flow-reverse {
+  0%   { transform: translate(-30px, 10px); }
+  50%  { transform: translate(45px, 10px); }
+  100% { transform: translate(-30px, 10px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wave-path-1 {
+    animation: wave-flow 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .wave-path-2 {
+    animation: wave-flow-reverse 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+}

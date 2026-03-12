@@ -49,15 +49,15 @@ export default function Hero() {
             </linearGradient>
           </defs>
           <path
+            className="wave-path-1"
             d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z"
             fill="url(#heroWaveGradient)"
           />
-          <g transform="translate(-20,10)">
-            <path
-              d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z"
-              fill="#F2F4F5"
-            />
-          </g>
+          <path
+            className="wave-path-2"
+            d="M0 32V8c120 12 240 12 360 4 120-8 240-20 360-4s240 16 360 12 240-12 360-4 240 12 360 16v4H0z"
+            fill="#F2F4F5"
+          />
         </svg>
       </div>
     </section>

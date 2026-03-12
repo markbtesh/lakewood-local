@@ -5,12 +5,13 @@ import { getBusinessBySlug } from '../data/businesses';
 
 const SITE_URL = 'https://lakewoodlocal.net';
 
-function StarRating({ rating = 5 }) {
+function StarRating({ rating = 5, yellow }) {
   const stars = Math.min(5, Math.max(0, Math.round(rating)));
+  const starClass = yellow ? (i) => (i <= stars ? 'text-[#fbbc04]' : 'text-gray-300') : (i) => (i <= stars ? 'text-accent' : 'text-border');
   return (
     <span className="flex gap-0.5 mb-3" aria-label={`${stars} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className={`text-lg leading-none ${i <= stars ? 'text-accent' : 'text-border'}`} aria-hidden>★</span>
+        <span key={i} className={`text-lg leading-none ${starClass(i)}`} aria-hidden>★</span>
       ))}
     </span>
   );
@@ -58,11 +59,12 @@ export default function BusinessDetailPage() {
     '@type': 'LocalBusiness',
     name,
     description: metaDescription,
-    url: businessUrl,
+    ...(website && { url: website }),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': businessUrl },
     ...(address && { address }),
     ...(phone && { telephone: phone }),
     ...(website && { sameAs: [website].concat(facebook ? [facebook] : []) }),
-    ...(image && { image }),
+    ...(image && { image: image.startsWith('http') ? image : `${SITE_URL}${image}` }),
     ...(reviews?.length > 0 && {
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -88,7 +90,7 @@ export default function BusinessDetailPage() {
     <>
       <main className="py-10 sm:py-14 px-4 sm:px-6 pb-20 bg-bg-alt">
         <div className="container max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
-          <div className="min-w-0 order-2 lg:order-1">
+          <div className="min-w-0 order-1">
             <header className="mb-6">
               <span className="inline-block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-accent mb-2">
                 {categoryLabel}
@@ -129,7 +131,7 @@ export default function BusinessDetailPage() {
             </p>
           </div>
 
-          <aside className="order-first lg:order-2 flex flex-col gap-6 lg:sticky lg:top-[calc(64px+1.5rem)]">
+          <aside className="order-2 lg:order-2 flex flex-col gap-6 lg:sticky lg:top-[calc(64px+1.5rem)]">
             <div className="bg-surface border border-border rounded-[var(--radius-lg)] p-6 shadow-[0_4px_16px_rgba(13,115,119,0.06)]">
               <h2 className="text-lg font-semibold text-text m-0 mb-4">Contact</h2>
               {phone && (
@@ -141,6 +143,11 @@ export default function BusinessDetailPage() {
               )}
               {address && (
                 <p className="m-0 mb-4 text-[0.9rem] text-text-muted">{address}</p>
+              )}
+              {website && (
+                <p className="m-0 mb-3 text-[0.8125rem] text-text-muted">
+                  Website: <a href={website} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">{new URL(website).hostname.replace(/^www\./, '')}</a>
+                </p>
               )}
               <div className="flex flex-col gap-2">
                 {website && (
@@ -178,13 +185,18 @@ export default function BusinessDetailPage() {
                 </h2>
                 {firstReview && (
                   <>
-                    <StarRating rating={reviewRating} />
+                    <StarRating rating={reviewRating} yellow />
                     <p className="font-semibold text-[0.9rem] text-text m-0 mb-1">{firstReview.author}</p>
                     <p className="text-[0.9rem] leading-relaxed text-text-muted m-0 mb-4">&ldquo;{firstReview.text}&rdquo;</p>
                   </>
                 )}
                 {googleReviewsUrl && (
-                  <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" className="btn w-full justify-center gap-2 text-[0.9rem] py-2.5">
+                  <a
+                    href={googleReviewsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 text-[0.9rem] font-semibold text-white bg-[#1a73e8] rounded-[var(--radius-md)] no-underline transition-colors hover:bg-[#1557b0]"
+                  >
                     <span>Google Reviews</span>
                     <span aria-hidden>»</span>
                   </a>

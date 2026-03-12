@@ -1,19 +1,14 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { usePageMeta } from '../hooks/usePageMeta';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import BusinessCard from '../components/BusinessCard';
 import { businesses } from '../data/businesses';
 
-const PER_PAGE = 9;
 const SITE_URL = 'https://lakewoodlocal.net';
 
 export default function HomePage() {
-  const [page, setPage] = useState(1);
-  const total = businesses.length;
-  const totalPages = Math.ceil(total / PER_PAGE) || 1;
-  const start = (page - 1) * PER_PAGE;
-  const list = businesses.slice(start, start + PER_PAGE);
+  const list = businesses.slice(0, 6);
 
   const websiteJsonLd = useMemo(() => ({
     '@context': 'https://schema.org',
@@ -51,6 +46,15 @@ export default function HomePage() {
                   We believe the best businesses show up for their community. Every listing here is invited because they stand behind their work. When you support local, you&apos;re investing in people who take pride in what they do.
                 </p>
               </div>
+              {/* Mobile chat tail pointing up toward avatar */}
+              <div
+                className="sm:hidden absolute left-1/2 -translate-x-1/2 -top-4 w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-b-[18px] border-b-border z-0"
+                aria-hidden="true"
+              />
+              <div
+                className="sm:hidden absolute left-1/2 -translate-x-1/2 -top-[14px] w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[16px] border-b-surface z-10"
+                aria-hidden="true"
+              />
               <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-px w-0 h-0 border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent border-r-[20px] border-r-border z-20" aria-hidden="true" />
               <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent border-r-[18px] border-r-surface z-20" aria-hidden="true" />
             </div>
@@ -63,7 +67,7 @@ export default function HomePage() {
             <span className="relative inline-block after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-4px] after:h-0.5 after:w-12 after:rounded-full after:bg-accent/70">Recently Added</span>
           </h2>
           <p className="text-center text-text-muted mb-10 text-[0.9rem]">
-            Fresh picks from Lakewood and Howell—hand-chosen so you don&apos;t have to scroll through noise.
+            Fresh picks from Lakewood, New Jersey and all over the Ocean County area—hand-chosen so you don&apos;t have to scroll through noise.
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none m-0 p-0">
             {list.map((b) => (
@@ -72,31 +76,6 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
-          {totalPages > 1 && (
-            <nav className="flex flex-wrap items-center justify-center gap-5 mt-10 pt-10 border-t border-border" aria-label="Business list pagination">
-              <button
-                type="button"
-                className="btn min-w-[120px] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                disabled={page <= 1}
-                onClick={() => setPage((p) => p - 1)}
-                aria-label="Previous page"
-              >
-                Previous
-              </button>
-              <span className="text-[0.95rem] text-text-muted" aria-live="polite">
-                Page {page} of {totalPages}
-              </span>
-              <button
-                type="button"
-                className="btn min-w-[120px] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                disabled={page >= totalPages}
-                onClick={() => setPage((p) => p + 1)}
-                aria-label="Next page"
-              >
-                Next
-              </button>
-            </nav>
-          )}
         </div>
       </section>
     </>
