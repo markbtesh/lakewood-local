@@ -111,9 +111,7 @@ export default function BusinessDetailPage() {
             </div>
 
             <div className="text-text">
-              <h2 className="text-xl font-semibold text-text m-0 mb-3">
-                Welcome to {name}
-              </h2>
+             
               <p className="text-[0.9375rem] leading-relaxed text-text m-0 mb-8">{description}</p>
 
               {sections.map((section, i) => (

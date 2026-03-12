@@ -9,23 +9,23 @@ export const categories = [
 export const businesses = [
   {
     id: 'battle-real-estate-nj',
-    name: 'Battle Real Estate NJ',
+    name: 'Anthony Battle Real Estate NJ',
     tagline: 'Residential and commercial real estate across New Jersey and a mindset that goes beyond the sale.',
     category: 'real-estate',
     categoryLabel: 'Real Estate Agents',
-    description: `Anthony is a New Jersey based realtor and entrepreneur who has spent the last three to four years turning his natural creativity and love of people into a career that goes well beyond selling homes.`,
+    description: `Anthony Battle is a New Jersey based realtor and entrepreneur who has spent the last three to four years turning his natural creativity and love of people into a career that goes well beyond selling homes.`,
     sections: [
       {
         title: 'What Makes Anthony Different',
-        body: `A Kean University graduate with a degree in psychology, Anthony brings a genuine understanding of how people think and what they need to hear. Having worked extensively with investors across residential and commercial properties, he offers clients a wider view of the road ahead. With first time buyers, he coaches smarter, strategic moves: build equity, learn what it means to be a homeowner, and use that first property as a stepping stone. His goal: clients who can sit down with anyone and clearly explain how the whole thing came together.`,
+        body: `A Kean University graduate with a degree in psychology, Anthony Battle brings a genuine understanding of how people think and what they need to hear. Having worked extensively with investors across residential and commercial properties, he offers clients a wider view of the road ahead. With first time buyers, he coaches smarter, strategic moves: build equity, learn what it means to be a homeowner, and use that first property as a stepping stone. His goal: clients who can sit down with anyone and clearly explain how the whole thing came together.`,
       },
       {
         title: 'Battle Connects',
-        body: `Outside of real estate, Anthony founded Battle Connects, a networking platform serving Monmouth and Ocean County. It grew from his years as co-chairman of the Young Emerging Professionals through the Toms River Chamber of Commerce. Battle Connects is for coaches, business owners, content creators, digital influencers, and anyone who benefits from knowing the right people. Events are held quarterly, with Anthony doing a personal debrief after each one to keep improving.`,
+        body: `Outside of real estate, Anthony Battle founded Battle Connects, a networking platform serving Monmouth and Ocean County. It grew from his years as co-chairman of the Young Emerging Professionals through the Toms River Chamber of Commerce. Battle Connects is for coaches, business owners, content creators, digital influencers, and anyone who benefits from knowing the right people. Events are held quarterly, with Anthony doing a personal debrief after each one to keep improving.`,
       },
       {
         title: 'A Team Player',
-        body: `Anthony describes himself as a team player in the truest sense, someone who understands that being on a team doesn't always mean being the captain. Whether working alongside a lender, an attorney, or a title company, his focus stays on making the client's experience as smooth and seamless as possible. This is a service based profession, and that's something he never loses sight of.`,
+        body: `Anthony Battle describes himself as a team player in the truest sense, someone who understands that being on a team doesn't always mean being the captain. Whether working alongside a lender, an attorney, or a title company, his focus stays on making the client's experience as smooth and seamless as possible. This is a service based profession, and that's something he never loses sight of.`,
       },
     ],
     phone: '(732) 267-5495',
